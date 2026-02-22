@@ -1,0 +1,81 @@
+name: curio
+description: "A new Flutter project."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI & Icons
+  cupertino_icons: ^1.0.8
+  google_fonts: ^8.0.1
+  flutter_animate: ^4.5.2
+  gap: ^3.0.1
+  material_symbols_icons: ^4.2906.0
+  dynamic_color: ^1.7.0
+  flutter_colorpicker: ^1.0.3
+
+  # State Management
+  flutter_riverpod: ^3.0.3
+  riverpod_annotation: ^4.0.0
+
+  # Navigation
+  go_router: ^17.0.0
+
+  # Storage & Database
+  sqflite: ^2.4.2
+  path_provider: ^2.1.5
+  shared_preferences: ^2.5.3
+  async: ^2.11.0
+
+  # Media & Playback
+  media_kit: ^1.1.10
+  media_kit_video: ^2.0.1
+  media_kit_libs_android_video: ^1.3.6
+  audio_service: ^0.18.18
+  share_plus: ^12.0.1
+
+  hugeicons: ^1.0.0
+  dio: ^5.9.0
+  http: ^1.2.0
+  webview_flutter: ^4.7.0
+  flutter_local_notifications: ^20.0.0
+  open_filex: ^4.5.0
+  flutter_logs: ^2.1.6
+  percent_indicator: ^4.2.3
+  permission_handler: ^12.0.1
+  intl: ^0.20.2
+  flutter_localizations:
+    sdk: flutter
+  path: ^1.9.1
+  synchronized: ^3.4.0
+  filesize: ^2.0.1
+  flutter_gen: ^5.12.0
+  # COMMUNITY ISAR (Compatible with modern analyzer)
+  isar_community: ^3.3.0
+  isar_community_flutter_libs: ^3.3.0
+  url_launcher: ^6.3.2
+  flutter_dotenv: ^6.0.0
+  flutter_secure_storage: ^10.0.0
+  file_picker: ^10.3.8
+  image_picker: ^1.1.2
+  animated_bottom_navigation_bar: ^1.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  riverpod_generator: ^4.0.0+1
+  build_runner: ^2.4.10
+  # COMMUNITY ISAR GENERATOR
+  isar_community_generator: ^3.3.0
+
+# NO OVERRIDES NEEDED - The community fork handles the compatibility
+flutter:
+  generate: true
+  uses-material-design: true
+

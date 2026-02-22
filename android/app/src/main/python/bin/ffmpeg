@@ -1,0 +1,9 @@
+#!/system/bin/sh
+# FFmpeg wrapper for yt-dlp on Android
+# Calls FFmpegKit through Python bridge
+
+# Get the directory of this script
+SCRIPT_DIR="$(dirname "$0")"
+
+# Call Python to execute FFmpeg via FFmpegKit
+python3 "$SCRIPT_DIR/ffmpeg_wrapper.py" "$@"

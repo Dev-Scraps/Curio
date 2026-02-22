@@ -1,0 +1,17 @@
+# Dependencies for YT-DLP Bridge
+
+# Core
+yt-dlp[default]  # YouTube extraction with recommended networking extras
+yt-dlp-ejs      # EJS challenge solver for YouTube
+mutagen         # Metadata tagging support
+pycryptodomex   # HLS stream decryption support
+python>=3.9
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Development (optional)
+black>=23.9.0  # Code formatting
+flake8>=6.1.0  # Linting
+mypy>=1.5.0    # Type checking

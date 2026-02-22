@@ -1,0 +1,190 @@
+// ignore_for_file: use_key_in_widget_constructors
+
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:hugeicons/hugeicons.dart';
+
+// -----------------------------------------------------------------------------
+// SETTINGS CARD WIDGET
+// -----------------------------------------------------------------------------
+class SettingsCard extends StatelessWidget {
+  final List<Widget> children;
+
+  const SettingsCard({required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(1),
+        child: Column(children: children),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SETTINGS TILE WIDGET
+// -----------------------------------------------------------------------------
+class SettingsTile extends StatelessWidget {
+  final Object icon;
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  final Color? iconColor;
+
+  const SettingsTile({
+    required this.icon,
+    required this.title,
+    this.subtitle,
+    this.trailing,
+    this.onTap,
+    this.iconColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Row(
+          children: [
+            if (icon is IconData)
+              Icon(
+                icon as IconData,
+                size: 20.0,
+                color:
+                    iconColor ?? Theme.of(context).colorScheme.onSurfaceVariant,
+              )
+            else
+              HugeIcon(
+                icon: icon as List<List<dynamic>>,
+                size: 20.0,
+                color:
+                    iconColor ?? Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            const Gap(16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  if (subtitle != null) ...[
+                    const Gap(2),
+                    Text(
+                      subtitle!,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            if (trailing != null) ...[
+              const Gap(12),
+              trailing!,
+            ] else if (onTap != null)
+              Icon(
+                Icons.chevron_right_rounded,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                size: 22.0,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SWITCH TILE WIDGET
+// -----------------------------------------------------------------------------
+class SwitchTile extends StatelessWidget {
+  final Object icon;
+  final String title;
+  final bool value;
+  final ValueChanged<bool> onChanged;
+
+  const SwitchTile({
+    required this.icon,
+    required this.title,
+    required this.value,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => onChanged(!value),
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            if (icon is IconData)
+              Icon(
+                icon as IconData,
+                size: 20.0,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              )
+            else
+              HugeIcon(
+                icon: icon as List<List<dynamic>>,
+                size: 20.0,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            const Gap(16),
+            Expanded(
+              child: Text(
+                title,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+              ),
+            ),
+            Switch(value: value, onChanged: onChanged),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SECTION HEADER WIDGET
+// -----------------------------------------------------------------------------
+class SectionHeader extends StatelessWidget {
+  final String title;
+  const SectionHeader({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, bottom: 8),
+      child: Text(
+        title.toUpperCase(),
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.primary,
+          letterSpacing: 1.2,
+        ),
+      ),
+    );
+  }
+}
